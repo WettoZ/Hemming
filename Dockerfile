@@ -8,8 +8,6 @@ WORKDIR /app
 # Add current directory code to working directory
 ADD . /app/
 
-VOLUME . /static
-
 # set default environment variables
 ENV PYTHONUNBUFFERED 1
 ENV LANG C.UTF-8
