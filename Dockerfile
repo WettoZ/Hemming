@@ -30,14 +30,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
+RUN python manage.py collectstatic
 # install environment dependencies
 RUN pip3 install --upgrade pip
 RUN pip3 install pipenv
 
 # Install project dependencies
 RUN pipenv install --skip-lock --system --dev
-RUN python manage.py collectstatic
+
 
 EXPOSE 8888
 CMD gunicorn hem.wsgi:application --bind 0.0.0.0:$PORT
