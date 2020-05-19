@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Код Хэмминга</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" media="all" href="{% static 'style.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="wrapper">
+        <div class="wp">
+            <div class="name">
+                <center><h1>Код Хэмминга</h1></center>
+            </div>
+            <div class="shortinfo">
+                <center>Коды Хэмминга — наиболее известные и, вероятно, первые из самоконтролирующихся и самокорректирующихся кодов. <br> Построены они применительно к двоичной системе счисления.</center>
+                 <br>
+                 <center>Другими словами, это алгоритм, который позволяет закодировать какое-либо информационное сообщение определённым образом и после передачи (например по сети) определить появилась ли какая-то ошибка в этом сообщении (к примеру из-за помех) и, при возможности, восстановить это сообщение.</center>
+            </div>
+            <div class="block">
+                <div class="content">
+                        <form action="" method="post" id="frm">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            {{ field }}
+                            {% endfor %}
+                            <div class="plc"><input class="inp" type="submit" name="submit" value="Отправить"></div>
+                        </form>
+                    </div>
+            </div>
+            <div class="block">
+                    {% if submitbutton == "Отправить" %}
+                    <div class="outputpool">
+                        <div class="piceinfo">
+                            <h2>Представление в бинарном виде:</h2>
+                            {% for bn in binv %}
+                            {{ bn }}
+                            <br>
+                            {% endfor %}
+                        </div>
+                        <div class="piceinfo">
+                            <h2>Контрольные биты:</h2>
+                            {% for kb in kontrbit %}
+                            {{ kb | safe }}
+                            <br>
+                            {% endfor %}
+
+                        </div>
+                        <div class="piceinfo">
+                            <h2>Деформируем данные:</h2>
+                            {% for mr in mark %}
+                            {{ mr | safe }}
+                            <br>
+                            {% endfor %}
+                        </div>
+                        <div class="piceinfo">
+                            <h2>Вычисление синдрома:</h2>
+                            {% for sn in syndrom %}
+                            {{ sn }}
+                            <br>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    {% endif %}
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
