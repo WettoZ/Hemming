@@ -126,5 +126,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/hem/apps/project/static/',
     ]
-STATIC_ROOT = './static/'
+STATIC_ROOT = './hem/apps/project/static/'
 STATIC_URL = '/static/'
